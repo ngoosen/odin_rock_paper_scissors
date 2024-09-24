@@ -71,7 +71,7 @@ function playGame() {
     const humanChoice = getHumanChoice();
 
     const roundResult = playRound(computerChoice, humanChoice);
-    console.log("🚀 ~ playGame ~ roundResult:", roundResult);
+    console.log(roundResult);
 
     round++;
   }
