@@ -1,3 +1,5 @@
+let gameCancelled = false;
+
 function getComputerChoice() {
   const randomNumber = Math.floor(Math.random() * 10);
 
@@ -11,7 +13,14 @@ function getComputerChoice() {
 }
 
 function getHumanChoice() {
-  const userChoice = prompt("Please enter Rock, Paper or Scissors: ").toLowerCase();
+  let userChoice;
+
+  try {
+    userChoice = prompt("Please enter Rock, Paper or Scissors: ").toLowerCase();
+  } catch {
+    gameCancelled = true;
+    return;
+  }
 
   if (userChoice !== "rock" && userChoice !== "paper" && userChoice !== "scissors") {
     alert("Invalid choice! Please enter Rock, Paper or Scissors.");
@@ -31,7 +40,9 @@ function playGame() {
   let round = 0;
 
   function playRound(computerChoice, humanChoice) {
-    humanChoice = humanChoice.toLowerCase();
+    if (gameCancelled) {
+      return;
+    }
 
     if (humanChoice === computerChoice) {
       return "Tie!";
@@ -71,17 +82,25 @@ function playGame() {
     const humanChoice = getHumanChoice();
 
     const roundResult = playRound(computerChoice, humanChoice);
-    console.log(roundResult);
 
+    if (gameCancelled) {
+      break;
+    }
+
+    console.log(roundResult);
     round++;
   }
 
-  if (humanScore > computerScore) {
-    alert("You won the game! Congratulations!");
-  } else if (humanScore < computerScore) {
-    alert("You lost the game! Better luck next time!");
+  if (gameCancelled) {
+    console.log("It seems like you don't want to play. That's fine, I don't care... I didn't even want to play in the first place...");
   } else {
-    alert("It's a tie! Play again to see who's the winner!");
+    if (humanScore > computerScore) {
+      alert("You won the game! Congratulations!");
+    } else if (humanScore < computerScore) {
+      alert("You lost the game! Better luck next time!");
+    } else {
+      alert("It's a tie! Play again to see who's the winner!");
+    }
   }
 }
 
