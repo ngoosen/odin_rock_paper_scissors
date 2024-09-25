@@ -21,6 +21,22 @@ const resultsP = document.querySelector("p#textResult");
 const computerScoreSpan = document.querySelector("span#computerScore");
 const humanScoreSpan = document.querySelector("span#humanScore");
 
+function highlightWinner() {
+  const computer = document.querySelector("#computer");
+  const human = document.querySelector("#human");
+
+  if (computerScore > humanScore) {
+    computer.classList.add("winner");
+    human.classList.remove("winner");
+  } else if (humanScore > computerScore) {
+    human.classList.add("winner");
+    computer.classList.remove("winner");
+  } else {
+    computer.classList.remove("winner");
+    human.classList.remove("winner");
+  }
+}
+
 function displayResult(result, computerChoice, humanChoice) {
   if (result === "tie") {
     resultsP.textContent = "It's a tie! Try again.";
@@ -31,6 +47,8 @@ function displayResult(result, computerChoice, humanChoice) {
     resultsP.textContent = `You loose! ${capitalize(computerChoice)} beats ${capitalize(humanChoice)}`;
     computerScoreSpan.textContent = ++computerScore;
   }
+
+  highlightWinner();
 }
 
 function playRound(humanChoice) {

@@ -4,26 +4,42 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=1920, initial-scale=1.0">
   <title>Rock Paper Scissors</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <ul class="buttons">
+  <h1>Let's play Rock, Paper, Scissors!</h1>
+
+  <ul>
     <li>
-      <button id="rock">Rock</button>
+      <button id="rock">
+        <i class="fa-regular fa-hand-back-fist"></i>
+        <p>Rock</p>
+      </button>
     </li>
     <li>
-      <button id="paper">Paper</button>
+      <button id="paper">
+        <i class="fa-regular fa-hand"></i>
+        <p>Paper</p>
+      </button>
     </li>
     <li>
-      <button id="scissors">Scissors</button>
+      <button id="scissors">
+        <i class="fa-regular fa-hand-scissors"></i>
+        <p>Scissors</p>
+      </button>
     </li>
   </ul>
 
-  <div class="result">
+  <section class="result">
     <p id="textResult"></p>
 
-    <p>Computer score: <span id="computerScore">0</span></p>
-    <p>Your score: <span id="humanScore">0</span></p>
-  </div>
+    <div class="scores">
+      <p id="computer">Computer score: <span id="computerScore">0</span></p>
+      <p id="human">Your score: <span id="humanScore">0</span></p>
+    </div>
+  </section>
+
+  <script src="https://kit.fontawesome.com/4713cbc19b.js" crossorigin="anonymous"></script>
+  <script src="./script.js"></script>
 </body>
-<script src="./script.js"></script>
 </html>
