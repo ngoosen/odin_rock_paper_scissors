@@ -21,6 +21,38 @@ const resultsP = document.querySelector("p#textResult");
 const computerScoreSpan = document.querySelector("span#computerScore");
 const humanScoreSpan = document.querySelector("span#humanScore");
 
+function resetGame() {
+  const winnerDisplayDiv = document.querySelector(".winnerDisplay");
+  winnerDisplayDiv.style.display = "none";
+
+  computerScore = 0;
+  humanScore = 0;
+  computerScoreSpan.textContent = 0;
+  humanScoreSpan.textContent = 0;
+  resultsP.textContent = "";
+
+  highlightWinner();
+}
+
+const playAgainButton = document.querySelector("#playAgain");
+playAgainButton.addEventListener("click", resetGame);
+
+function endGame(winner) {
+  const winnerDisplayDiv = document.querySelector(".winnerDisplay");
+  winnerDisplayDiv.style.display = "flex";
+
+  const title = document.querySelector(".winnerDisplay>div>h2");
+  const text = document.querySelector(".winnerDisplay>div>p");
+
+  if (winner === "human") {
+    title.textContent = "Congratulations!";
+    text.textContent = `You've won the game ${humanScore} to ${computerScore}!`;
+  } else {
+    title.textContent = "Oh no!";
+    text.textContent = `You've lost the game ${computerScore} to ${humanScore}!`;
+  }
+}
+
 function highlightWinner() {
   const computer = document.querySelector("#computer");
   const human = document.querySelector("#human");
@@ -46,6 +78,11 @@ function displayResult(result, computerChoice, humanChoice) {
   } else {
     resultsP.textContent = `You loose! ${capitalize(computerChoice)} beats ${capitalize(humanChoice)}`;
     computerScoreSpan.textContent = ++computerScore;
+  }
+
+  if (humanScore >= 5 || computerScore >= 5) {
+    endGame(humanScore > computerScore ? "human" : "computer");
+    return;
   }
 
   highlightWinner();

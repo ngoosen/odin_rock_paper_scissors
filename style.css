@@ -65,7 +65,7 @@ button:hover i,
 button:hover p,
 button:active i,
 button:active p {
-  color: #ffffff;
+  color: #f2f5ff;
 }
 
 .result {
@@ -86,4 +86,61 @@ button:active p {
 
 .winner, .winner span {
   color: #0c5229;
+}
+
+.winnerDisplay {
+  display: flex;
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  background-color: #0c205265;
+}
+
+.winnerDisplay > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 50%;
+  height: 50%;
+
+  padding: 70px 0;
+
+  border-radius: 30px;
+  background-color: #f2f5ff;
+}
+
+.winnerDisplay h2 {
+  font-size: 40px;
+  margin-top: auto;
+}
+
+.winnerDisplay p {
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+#playAgain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: auto;
+  height: auto;
+
+  margin-top: auto;
+}
+
+#playAgain p {
+  font-size: 25px;
+  margin: 10px 30px;
 }
